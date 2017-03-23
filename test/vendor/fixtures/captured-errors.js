@@ -333,6 +333,16 @@ CapturedExceptions.CHROME_48_BLOB = {
     "    at n.handle (blob:http%3A//localhost%3A8080/abfc40e9-4742-44ed-9dcd-af8f99a29379:7:2863)"
 };
 
+CapturedExceptions.CHROME_56_EVAL = {
+    message: 'fdas is not defined',
+    name: 'ReferenceError',
+    stack: 'ReferenceError: fdas is not defined\n' +
+    '    at derp (http://localhost:8080/example/scratch.js:31:5)\n' +
+    '    at eval (eval at throwEval (http://localhost:8080/example/scratch.js:45:5), <anonymous>:1:1)\n' +
+    '    at throwEval (http://localhost:8080/example/scratch.js:45:5)\n' +
+    '    at HTMLButtonElement.onclick (http://localhost:8080/example/:36:31)'
+};
+
 CapturedExceptions.PHANTOMJS_1_19 = {
     stack: "Error: foo\n" +
     "    at file:///path/to/file.js:878\n" +
@@ -350,6 +360,17 @@ CapturedExceptions.FIREFOX_50_RESOURCE_URL = {
     message: 'this.props.raw[this.state.dataSource].rows is undefined',
     name: 'TypeError'
 };
+
+CapturedExceptions.FIREFOX_51_EVAL = {
+    stack: '@http://localhost:8080/example/scratch.js line 45 > eval:1:1\n' +
+    'throwEval@http://localhost:8080/example/scratch.js:45:5\n' +
+    'onclick@http://localhost:8080/example/:1:1\n',
+    fileName: 'http://localhost:8080/example/scratch.js line 45 > eval', // this is the .fileName property
+    lineNumber: 1,
+    columnNumber: 1,
+    message: 'lol is not defined',
+    name: 'ReferenceError'
+}
 
 CapturedExceptions.ANDROID_REACT_NATIVE = {
     message: 'Error: test',

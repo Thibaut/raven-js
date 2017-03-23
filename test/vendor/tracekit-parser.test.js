@@ -216,6 +216,14 @@ describe('TraceKit', function () {
             assert.deepEqual(stackFrames.stack.length, 3);
             assert.deepEqual(stackFrames.stack[0], { url: 'resource://path/data/content/bundle.js', func: 'render', args: [], line: 5529, column: 16 });
         });
+
+        it('should parse Firefox errors with eval URLs', function () {
+            var stackFrames = TraceKit.computeStackTrace(CapturedExceptions.FIREFOX_51_EVAL);
+            assert.ok(stackFrames);
+            assert.deepEqual(stackFrames.stack.length, 3);
+            assert.deepEqual(stackFrames.stack[0], { url: 'http://localhost:8080/example/scratch.js', func: '?', args: [], line: 45, column: null });
+        });
+
         it('should parse React Native errors on Android', function () {
             var stackFrames = TraceKit.computeStackTrace(CapturedExceptions.ANDROID_REACT_NATIVE);
             assert.ok(stackFrames);
