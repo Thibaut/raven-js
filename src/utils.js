@@ -11,6 +11,7 @@ function isError(what) {
     return isObject(what) &&
         toString === '[object Error]' ||
         toString === '[object Exception]' || // Firefox NS_ERROR_FAILURE Exceptions
+        toString === '[object DOMError]' ||
         what instanceof Error;
 }
 

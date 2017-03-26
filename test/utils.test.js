@@ -67,9 +67,17 @@ describe('utils', function () {
 
     describe('isError', function() {
         it('should work as advertised', function() {
+            if (!DOMError) {
+                function DOMError(name, message) {
+                    this.name = name;
+                    this.message = message || '';
+                }
+            }
+
             assert.isTrue(isError(new Error()));
             assert.isTrue(isError(new ReferenceError()));
             assert.isTrue(isError(new RavenConfigError()));
+            assert.isTrue(isError(new DOMError('NotFoundError')));
             assert.isFalse(isError({}));
             assert.isFalse(isError(''));
             assert.isFalse(isError(true));
